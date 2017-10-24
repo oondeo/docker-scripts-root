@@ -2,7 +2,7 @@ ssls
 
 
 ``` bash
-git submodule add --name root github.com:oondeo/docker-scripts-root.git
+git submodule add github.com:oondeo/docker-scripts-root.git root
 mkdir -p s2i/bin
 ```
 
