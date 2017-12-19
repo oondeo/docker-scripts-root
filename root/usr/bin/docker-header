@@ -8,5 +8,5 @@ cp /bin/sh /sh && apt-get update && apt-get install -y --no-install-recommends c
     zip unzip rsync && curl -o /sbin/tini -SLk https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini \
     && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
     && echo $LANG UTF-8 >> /etc/locale.gen \
-    && locale-gen \     
+    && locale-gen \
     && chmod +x /sbin/tini && rm -rf /var/lib/apt/* /var/tmp/* /tmp/* /var/log/* 
