@@ -10,3 +10,6 @@ cp /bin/sh /sh && apt-get update && apt-get install -y --no-install-recommends c
     && echo $LANG UTF-8 >> /etc/locale.gen \
     && locale-gen \
     && chmod +x /sbin/tini && rm -rf /var/lib/apt/* /var/tmp/* /tmp/* /var/log/* 
+
+
+mkdir -p /opt/app-root/src /opt/app-root/etc /opt/app-root/bin /opt/app-root/lib /opt/app-root/var
