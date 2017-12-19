@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Reset permissions of modified directories and add default user
-RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
+useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
       -c "Default Application User" default \
     && chown -R 1001:0 /opt/app-root \
     && mkdir -p ${HOME}/.pki/nssdb \
