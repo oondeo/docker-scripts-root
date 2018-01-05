@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
 cat <<EOF
 This image serves as the base image for all OpenShift v3 S2I builder images.

@@ -1,2 +1,11 @@
-#!/bin/bash
-exec "$@"
+#!/bin/dash
+if [ -f /etc/skel/initrc ]
+then 
+. /etc/skel/initrc
+fi
+if [ -f ~/.bashrc ]
+then
+. ~/.bashrc
+fi
+
+eval "$@"
