@@ -1,0 +1,6 @@
+#!/bin/bash
+function escape_string( str ) {
+   gsub(/[\\.^$(){}\[\]|*+?]/, "\\\\&", str)
+}
+
+scape_string "$*"
