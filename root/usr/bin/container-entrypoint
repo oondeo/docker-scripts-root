@@ -1,8 +1,8 @@
 #!/bin/dash
 export USER_ID=$(id -u)
 export GROUP_ID=$(id -g)
-sed -i 's/1001:x:1001:0:/1001:x:$USER_ID:$GROUP_ID:/' /etc/passwd
-
+sed "s/1001:x:1001:0:/1001:x:$USER_ID:$GROUP_ID:/" > /tmp/passwd
+cat /tmp/passwd > /etc/passwd
 
 if [ -f /etc/skel/initrc ]
 then 
