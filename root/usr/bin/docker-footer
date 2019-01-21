@@ -2,8 +2,9 @@
 
 # Reset permissions of modified directories and add default user
 useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
-      -c "Default Application User" default  || true
-adduser -u 1001 -s /bin/dash -G root -h ${HOME} default || true    
+      -c "Default Application User" 1001  || true
+adduser -u 1001 -s /bin/dash -G root -D -h ${HOME} 1001 || true 
+chmod g+w /etc/passwd
 chown -R 1001:0 /opt/app-root \
     && chmod -R g+w /opt/app-root \
     && chmod ug+s /opt/app-root/* \
@@ -14,4 +15,5 @@ chown -R 1001:0 /opt/app-root \
     && chmod 777 /var/run && chmod 775 /run \
     && chmod ug+s /run /var/run \
     && chown 1001 /var/run /run 
+find /opt/app-root -type d -exec chmod g+x {} +    
 
