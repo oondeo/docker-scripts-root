@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Fix openshift
+chmod g=u /etc/passwd
 
 #Install tiny on debian 
 TINI_VERSION=v0.16.1

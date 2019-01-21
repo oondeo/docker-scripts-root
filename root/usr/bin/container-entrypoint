@@ -1,8 +1,13 @@
 #!/bin/dash
-export USER_ID=$(id -u)
-export GROUP_ID=$(id -g)
-sed "s/1001:x:1001:0:/1001:x:$USER_ID:$GROUP_ID:/" > /tmp/passwd
-cat /tmp/passwd > /etc/passwd
+
+#Openshift fix
+if [ `id -u` -ge 10000 ]; then
+    if ! whoami &> /dev/null; then
+        if [ -w /etc/passwd ]; then
+            echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:${HOME}:/sbin/nologin" >> /etc/passwd
+        fi
+    fi
+fi
 
 if [ -f /etc/skel/initrc ]
 then 
