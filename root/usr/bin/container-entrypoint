@@ -18,4 +18,4 @@ then
 . ~/.bashrc
 fi
 
-eval "$@"
+exec "$@"
