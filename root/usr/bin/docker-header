@@ -5,7 +5,7 @@ MUSL_LOCALES_URL=${1:-"https://raw.githubusercontent.com/oondeo/docker-alpine/ma
 chmod g=u /etc/passwd
 
 
-if [ "$(grep 'ID=alpine' /etc/os-realase)" != "" ]
+if [ "$(grep 'ID=alpine' /etc/os-release)" != "" ]
 then 
     apk-install rsync git openssh-client icu-libs tzdata curl inotify-tools || true
     cd /tmp && wget "$MUSL_LOCALES_URL" -O musl-locales.apk \
