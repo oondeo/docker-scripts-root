@@ -1,13 +1,13 @@
 #!/bin/bash
 
-MUSL_LOCALES_URL=$(1:-"https://raw.githubusercontent.com/oondeo/docker-alpine/master/musl-locales-0.2-r0.apk")
+MUSL_LOCALES_URL=${1:-"https://raw.githubusercontent.com/oondeo/docker-alpine/master/musl-locales-0.2-r0.apk"}
 #Fix openshift
 chmod g=u /etc/passwd
 
 
-if [ "$(grep 'ID=alpine' /etc/os-relase)" != "" ]
+if [ "$(grep 'ID=alpine' /etc/os-realase)" != "" ]
 then 
-    apk-install bash rsync git openssh-client icu-libs tzdata curl inotify-tools || true
+    apk-install rsync git openssh-client icu-libs tzdata curl inotify-tools || true
     cd /tmp && wget "$MUSL_LOCALES_URL" -O musl-locales.apk \
     && apk add --allow-untrusted musl-locales.apk && rm -f musl-locales.apk || true
     apk-install tini dash && ln /usr/bin/dash /bin/dash && ln /bin/bash /usr/bin/bash || true
