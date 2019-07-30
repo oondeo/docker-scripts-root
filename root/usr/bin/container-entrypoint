@@ -4,7 +4,9 @@
 if [ `id -u` -ge 10000 ]; then
     if ! whoami &> /dev/null; then
         if [ -w /etc/passwd ]; then
-            echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:${HOME}:/sbin/nologin" >> /etc/passwd
+            sed '/^default\:/d' /etc/passwd > /tmp/passwd
+            echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:${HOME}:/sbin/nologin" >> /tmp/passwd
+            cat /tmp/passwd > /etc/passwd
         fi
     fi
 fi
@@ -17,5 +19,5 @@ if [ -f ~/.bashrc ]
 then
 . ~/.bashrc
 fi
-
+umask 0002
 exec "$@"
